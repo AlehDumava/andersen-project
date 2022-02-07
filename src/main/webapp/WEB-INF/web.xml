@@ -9,11 +9,11 @@
   version="5.0"
   metadata-complete="true">
   
-<description>MyServlet and JSP Examples</description>
-<display-name>andersen-training</display-name>
+<description>MyServlet</description>
+<display-name>andersen-project</display-name>
  
  <servlet>
-        <servlet-name>andersen-training</servlet-name>
+        <servlet-name>andersen-project</servlet-name>
         <servlet-class>web.MyServlet</servlet-class>
  </servlet>
  
