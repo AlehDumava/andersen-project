@@ -3,23 +3,18 @@
 
 <%@ page isELIgnored="false"%>
 
+<div style="background: #E0E0E0; height: 55px; padding: 5px;">
+  <div style="float: left">
+     <h1>My Site</h1>
+  </div>
 
+  <div style="float: right; padding: 10px; text-align: right;">
 
+     <!-- User store in session with attribute: loginedUser -->
+     Hello <b>${loginedUser.userName}</b>
+   <br/>
+     Search <input name="search">
 
-<!DOCTYPE html>
-<html>
-   <head>
-   		<meta charset="UTF-8">
-   		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-      	<title>Menu</title>
-      	<meta name="Description" content="">
-      	<meta name="viewport" content="width=device-width, initial-scale=1">
-      	
-   </head>
-	<body>
-	
-	
-	</body>
+  </div>
 
-				
-	</html>
+</div>
