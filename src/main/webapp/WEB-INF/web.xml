@@ -26,7 +26,7 @@
 
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <url-pattern>/menu</url-pattern>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     
@@ -37,7 +37,7 @@
     </servlet-mapping>
   	
   	<welcome-file-list>
-  		<welcome-file>/index</welcome-file>
+  		<welcome-file>/menu</welcome-file>
   	</welcome-file-list>
   	
 </web-app>
