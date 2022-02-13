@@ -44,12 +44,15 @@ public class UserServlet extends HttpServlet {
 		case "/insert": 
 			insertUser(request, response);
 			break;
-		
 		case "/delete": 
 			deleteUser(request, response);
 			break;
-		case "/edit": break;
-		case "/update": break;
+		case "/edit": 
+			showEditForm(request, response);
+			break;
+		case "/update": 
+			updateUser(request, response);
+			break;
 		default: 
 			listUser(request, response);
 			break;
@@ -57,7 +60,6 @@ public class UserServlet extends HttpServlet {
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
 		}
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	
 	 private void listUser(HttpServletRequest request, HttpServletResponse response)
@@ -73,6 +75,28 @@ public class UserServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		User existingUser = userDAO.selectUser(id);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		request.setAttribute("user", existingUser);
+		dispatcher.forward(request, response);
+
+	}
+	
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String surname = request.getParameter("surname");
+		int age = Integer.parseInt(request.getParameter("age"));
+
+		User book = new User(id, name, surname, age);
+		userDAO.updateUser(book);
+		response.sendRedirect("list");
+	}
+	
 	private void insertUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
@@ -84,8 +108,8 @@ public class UserServlet extends HttpServlet {
 	
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
-		String name = request.getParameter("name");
-		userDAO.deleteUser("name");
+		int id = Integer.parseInt(request.getParameter("id"));
+		userDAO.deleteUser(id);
 		response.sendRedirect("list");
 	}
 }

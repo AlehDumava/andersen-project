@@ -26,19 +26,19 @@
 	<div class="container col-md-5">
 		<div class="card">
 			<div class="card-body">
-				<c:if test="${user != null}">
+				<c:if test='${user != null}'>
 					<form action="update" method="post">
 				</c:if>
-				<c:if test="${user == null}">
+				<c:if test='${user == null}'>
 					<form action="insert" method="post">
 				</c:if>
 
 				<caption>
 					<h2>
-						<c:if test="${user != null}">
+						<c:if test='${user != null}'>
             			Edit User
             		</c:if>
-						<c:if test="${user == null}">
+						<c:if test='${user == null}'>
             			Add New User
             		</c:if>
 					</h2>

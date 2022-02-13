@@ -18,9 +18,10 @@ public class UserDAO {
 	     private String password = "postgres";
 	 
 	     private static final String SQL_SELECT_ALL_USERS = "SELECT * FROM users;";
+	     private static final String SQL_SELECT_USER_BY_ID = "SELECT id, name, surname, age from users where id =?;";
 	     private static final String SQL_INSERT_USER = "INSERT INTO users" + " (name, surname, age) VALUES " + " (?, ?, ?);";
-	     private static final String SQL_DELETE_USER = "DELETE FROM users where name = ?;";
-	     private static final String SQL_UPDATE_USER = "UPDATE users SET name= ?, surname= ?, age= ? where name= ?;";
+	     private static final String SQL_DELETE_USER = "DELETE FROM users where id = ?;";
+	     private static final String SQL_UPDATE_USER = "UPDATE users SET name= ?, surname= ?, age= ? where id= ?;";
 	     
 	     protected Connection getConnection() {
 		 
@@ -58,6 +59,7 @@ public class UserDAO {
 	    		 		statement.setString(1, user.getName());
 	    		 		statement.setString(2, user.getSurname());
 	    		 		statement.setInt(3, user.getAge());
+	    		 		statement.setInt(4, user.getId());
 
 	    		 		rowUpdated = statement.executeUpdate() > 0;
 	    	 } 
@@ -84,11 +86,31 @@ public class UserDAO {
 	    	 return users;
 	     }
 	     
-	     public boolean deleteUser(String name) throws SQLException {
+	     public User selectUser(int id) {
+	 		User user = null;
+	 		try (Connection connection = getConnection();
+	 				PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_USER_BY_ID);) {
+	 			preparedStatement.setInt(1, id);
+	 			System.out.println(preparedStatement);
+	 			ResultSet rs = preparedStatement.executeQuery();
+
+	 			while (rs.next()) {
+	 				String name = rs.getString("name");
+	 				String surname = rs.getString("surname");
+	 				int age = rs.getInt("age");
+	 				user = new User(id, name, surname, age);
+	 			}
+	 		} catch (SQLException e) {
+	 			e.printStackTrace();
+	 		}
+	 		return user;
+	 	}
+	     
+	     public boolean deleteUser(int id) throws SQLException {
 	    	 boolean rowDeleted;
 	    	 try(Connection connection = getConnection(); 
 	    			 PreparedStatement statement = connection.prepareStatement(SQL_DELETE_USER);) {
-	    		 	statement.setString(1, name);
+	    		 	statement.setInt(1, id);
 	    		 	rowDeleted = statement.executeUpdate() > 0;
 	    		 }
 	    	 return rowDeleted;
