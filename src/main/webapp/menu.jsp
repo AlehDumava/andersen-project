@@ -6,8 +6,6 @@
 
 <!DOCTYPE html>
 <html>
-
-
 <div style="background: #E0E0E0; height: 55px; padding: 5px;">
   <div style="float: left">
      <h1>User Application</h1>

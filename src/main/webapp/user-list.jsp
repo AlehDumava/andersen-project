@@ -4,7 +4,7 @@
 <%@ page isELIgnored="false"%>
 <%@ page import="jakarta.servlet.jsp.PageContext"%>
 <%@ page import="jakarta.servlet.jsp.*"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,6 +12,10 @@
  <title>User Management Application</title>
 </head>
 <body>
+	<ul class="navbar-nav">
+				<li><a href="<%=request.getContextPath()%>/list"
+					class="nav-link">Users</a></li>
+	</ul>
  <center>
   <h1>User Management</h1>
         <h2>
@@ -21,9 +25,23 @@
          
         </h2>
  </center>
+ 
+ <div class="row">
+		<!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
+
+		<div class="container">
+			<h3 class="text-center">List of Users</h3>
+			<hr>
+			<div class="container text-left">
+
+				<a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add
+					New User</a>
+			</div>
+			<br>
     <div align="center">
         <table border="1" cellpadding="5">
-            <caption><h3>List of Users</h3></caption>
+            <caption> <h3>List of Users</h3> </caption>
+            <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -31,6 +49,8 @@
                 <th>Age</th>
                 <th>Actions</th>
             </tr>
+           </tbody> 
+            <tbody>
             <c:forEach var="user" items="${listUser}">
                 <tr>
                     <td><c:out value="${user.id}" /></td>
@@ -44,7 +64,9 @@
                     </td>
                 </tr>
             </c:forEach>
+            </tbody>
         </table>
+        <div>
     </div> 
 </body>
 </html>
