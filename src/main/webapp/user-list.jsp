@@ -25,7 +25,6 @@
          
         </h2>
  </center>
- 
  <div class="row">
 
 		<div class="container">
@@ -38,7 +37,7 @@
 		<br>
     <div align="center">
         <table border="1" cellpadding="5">
-            <caption> <h3>List of Users</h3> </caption>
+           
           <thead>
             <tr>
                 <th>ID</th>
@@ -51,10 +50,10 @@
           <tbody>
             <c:forEach var="user" items="${listUser}">
                 <tr>
-                    <td><c:out value="${user.id}" /></td>
-                    <td><c:out value="${user.name}" /></td>
-                    <td><c:out value="${user.surname}" /></td>
-                    <td><c:out value="${user.age}" /></td>
+                    <td><c:out value='${user.id}' /></td>
+                    <td><c:out value='${user.name}' /></td>
+                    <td><c:out value='${user.surname}' /></td>
+                    <td><c:out value='${user.age}' /></td>
                     <td>
                      <a href="edit?id=<c:out value='${user.id}' />">Edit</a>
                      &nbsp;&nbsp;&nbsp;&nbsp;
@@ -64,7 +63,8 @@
             	</c:forEach>
             </tbody>
         </table>
-        <div>
+        </div>
     </div> 
+    </div>
 </body>
 </html>

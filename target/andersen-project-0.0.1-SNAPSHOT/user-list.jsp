@@ -25,23 +25,20 @@
          
         </h2>
  </center>
- 
  <div class="row">
-		<!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
 		<div class="container">
 			<h3 class="text-center">List of Users</h3>
 			<hr>
 			<div class="container text-left">
 
-				<a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add
-					New User</a>
+				<a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add New User</a>
 			</div>
-			<br>
+		<br>
     <div align="center">
         <table border="1" cellpadding="5">
-            <caption><h3>List of Users</h3></caption>
-            <thead>
+           
+          <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -49,24 +46,25 @@
                 <th>Age</th>
                 <th>Actions</th>
             </tr>
-           </tbody> 
-            <tbody>
+          </thead>
+          <tbody>
             <c:forEach var="user" items="${listUser}">
                 <tr>
-                    <td><c:out value="${user.id}" /></td>
-                    <td><c:out value="${user.name}" /></td>
-                    <td><c:out value="${user.surname}" /></td>
-                    <td><c:out value="${user.age}" /></td>
+                    <td><c:out value='${user.id}' /></td>
+                    <td><c:out value='${user.name}' /></td>
+                    <td><c:out value='${user.surname}' /></td>
+                    <td><c:out value='${user.age}' /></td>
                     <td>
                      <a href="edit?id=<c:out value='${user.id}' />">Edit</a>
                      &nbsp;&nbsp;&nbsp;&nbsp;
                      <a href="delete?id=<c:out value='${user.name}' />">Delete</a>                     
                     </td>
                 </tr>
-            </c:forEach>
+            	</c:forEach>
             </tbody>
         </table>
-        <div>
+        </div>
     </div> 
+    </div>
 </body>
 </html>

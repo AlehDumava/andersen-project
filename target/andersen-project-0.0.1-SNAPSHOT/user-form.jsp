@@ -14,7 +14,7 @@
 
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark"
-			style="background-color: tomato">
+			style="background-color: #E0E0E0">
 			
 			<ul class="navbar-nav">
 				<li><a href="<%=request.getContextPath()%>/list"
@@ -49,25 +49,24 @@
 				</c:if>
 
 				<fieldset class="form-group">
-					<label>User Name</label> <input type="text"
+					<label>Name</label> <input type="text"
 						value="<c:out value='${user.name}' />" class="form-control"
-						name="name" required="required">
+						name="name" required = "required">
 				</fieldset>
 
 				<fieldset class="form-group">
-					<label>User Email</label> <input type="text"
-						value="<c:out value='${user.email}' />" class="form-control"
-						name="email">
+					<label>Surname</label> <input type="text"
+						value="<c:out value='${user.surname}' />" class="form-control"
+						name="surname">
 				</fieldset>
 
 				<fieldset class="form-group">
-					<label>User Country</label> <input type="text"
-						value="<c:out value='${user.country}' />" class="form-control"
-						name="country">
+					<label>Age</label> <input type="text"
+						value="<c:out value='${user.age}' />" class="form-control"
+						name="age">
 				</fieldset>
 
 				<button type="submit" class="btn btn-success">Save</button>
-				</form>
 			</div>
 		</div>
 	</div>

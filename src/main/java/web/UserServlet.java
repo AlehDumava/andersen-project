@@ -45,10 +45,14 @@ public class UserServlet extends HttpServlet {
 			insertUser(request, response);
 			break;
 		
-		case "/delete": break;
+		case "/delete": 
+			deleteUser(request, response);
+			break;
 		case "/edit": break;
 		case "/update": break;
-		default: break;
+		default: 
+			listUser(request, response);
+			break;
 		}
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
@@ -77,5 +81,11 @@ public class UserServlet extends HttpServlet {
 		userDAO.insertUser(newUser);
 		response.sendRedirect("list");
 	}
-
+	
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		String name = request.getParameter("name");
+		userDAO.deleteUser("name");
+		response.sendRedirect("list");
+	}
 }
