@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 /**
  * Servlet implementation class UserServlet
@@ -53,6 +54,14 @@ public class UserServlet extends HttpServlet {
 		}
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
+	
+	 private void listUser(HttpServletRequest request, HttpServletResponse response)
+			    throws SQLException, IOException, ServletException {
+			        List <User> listUser = userDAO.selectAllUsers();
+			        request.setAttribute("listUser", listUser);
+			        RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+			        dispatcher.forward(request, response);
+			    }
 
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
